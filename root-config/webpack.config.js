@@ -65,9 +65,6 @@ module.exports = {
     isDevelopment && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
       name: "RootApp",
-      remotes: {
-        ReactApp: "ReactApp@http://localhost:8081/remoteEntry.js"
-      },
       shared: {
         ...deps
       }
