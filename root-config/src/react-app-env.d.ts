@@ -1,3 +1,10 @@
+/// <reference types="react-scripts" />
+
+declare module "ReactApp/App" {
+  const App: React.ComponentType;
+  export default App;
+}
+
 declare module "*.html" {
   const rawHtmlFile: string;
   export = rawHtmlFile;

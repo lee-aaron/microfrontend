@@ -16,7 +16,7 @@ module.exports = {
   },
 
   devServer: {
-    port: 8080,
+    port: 8081,
   },
 
   target: isDevelopment ? 'web' : 'browserslist',
@@ -64,9 +64,10 @@ module.exports = {
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
     new ModuleFederationPlugin({
-      name: "RootApp",
-      remotes: {
-        ReactApp: "ReactApp@http://localhost:8081/remoteEntry.js"
+      name: "ReactApp",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./App": "./src/App"
       },
       shared: {
         ...deps
@@ -74,7 +75,7 @@ module.exports = {
     }),
     new HtmlWebPackPlugin({
       template: "./public/index.html",
-      favicon: "./public/favicon.ico"
+      favicon: "./public/favicon.ico",
     }),
-  ].filter(Boolean),
+  ].filter(Boolean),  
 }
